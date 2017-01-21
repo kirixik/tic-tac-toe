@@ -1,9 +1,9 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-const App = ({ board, stepNumber, playerSymbol, selectCell, selectSymbol}) => {
+const App = ({ board, stepNumber, playerSymbol, gameState, selectCell, selectSymbol, restartGame}) => {
     const listItems = board.map((symbol, index) =>
-        <button className="cell" key={index} onClick={(e) => {
+        <button disabled={!gameState.isGameActive} className="cell" key={index} onClick={(e) => {
             if (symbol === null)
                 selectCell(index, stepNumber)
         } }>
@@ -14,6 +14,14 @@ const App = ({ board, stepNumber, playerSymbol, selectCell, selectSymbol}) => {
         <div>
             <h2>Tic Tac Toe</h2>
             <span>step: {stepNumber}</span>
+            {
+                (!gameState.isGameActive) ?
+                    (<div>
+                        <div>{gameState.information}</div>
+                        <button onClick={(e) => restartGame()}> Restart </button>
+
+                    </div>) : null
+            }
             {playerSymbol === null ?
                 (<section>
                     <button onClick={(e) => selectSymbol('X')}> select X </button>
@@ -44,6 +52,11 @@ function mapDispatchToProps(dispatch) {
             dispatch({
                 type: "USER_SELECT_SYMBOL",
                 selectedSymbol: symbol
+            });
+        },
+        restartGame: () => {
+            dispatch({
+                type: "RESTART_GAME",
             });
         }
 

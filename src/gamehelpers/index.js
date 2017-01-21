@@ -16,6 +16,8 @@ const isPlayerTurn = (state, player) => {
 }
 
 const isAiTurn = (state) => {
+    if (state.playerSymbol === null)
+        return false;
     const aiSymbol = nextPlayer(state.playerSymbol);
     return isPlayerTurn(state, aiSymbol);
 }
@@ -31,7 +33,6 @@ const availableTurns = (board) => {
 const isTerminal = (board) => {
     if (availableTurns(board).length === 0)
         return true;
-
     for (let i = 0; i < lines.length; i++) {
         const [a, b, c] = lines[i];
         if (board[a] && board[a] === board[b] && board[a] === board[c]) {
@@ -66,4 +67,27 @@ const nextAvailableBoards = (board, player) => {
         };
     });
 };
-export {nextPlayer, isAiTurn, availableTurns, isTerminal, heuristic, nextAvailableBoards, isPlayerTurn}
+
+const evaluatGameState = (board) => {
+    if (isTerminal(board)) {
+        for (let i = 0; i < lines.length; i++) {
+            const [a, b, c] = lines[i];
+            if (board[a] && board[a] === board[b] && board[a] === board[c]) {
+                return {
+                    isGameActive: false,
+                    information: "Winner is " + board[a],
+                }
+            }
+        }
+        return {
+            isGameActive: false,
+            information: "Draw"
+        }
+    }
+    return {
+        isGameActive: true,
+    }
+
+};
+
+export { nextPlayer, isAiTurn, availableTurns, isTerminal, heuristic, nextAvailableBoards, isPlayerTurn, evaluatGameState }
