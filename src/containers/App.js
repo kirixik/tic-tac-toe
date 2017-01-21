@@ -9,7 +9,7 @@ const App = ({ board, stepNumber, playerSymbol, selectCell, selectSymbol, restar
         return 'cell ' + (highlightedCells[index] ? 'active' : '');
     }
     const listItems = board.map((symbol, index) =>
-        <button disabled={!gameState.isGameActive || symbol != null || playerSymbol === null} className={getButtonClass(index)} key={index} onClick={(e) => {
+        <button disabled={!gameState.isGameActive || symbol != null} className={getButtonClass(index)} key={index} onClick={(e) => {
             if (symbol === null)
                 selectCell(index, stepNumber)
         } }>
