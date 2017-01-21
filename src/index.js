@@ -7,20 +7,21 @@ import ai from './ai'
 import App from './components/App'
 import './index.css';
 
-const store = createStore(
+const store = createStore( // create store using redux
   reducer
 )
 
-store.dispatch({ type: "RESTART_GAME" });
+store.dispatch({ type: "RESTART_GAME" }); // init dispatch 
 
-function handleChange() {
+function handleChange() { 
   const action = ai.getAction(store.getState());
   if (action)
     store.dispatch(action);
 }
 
-store.subscribe(handleChange)
-render(
+store.subscribe(handleChange)// our AI observes state of application and if it should do some action  - dispatch it using redux dispatch
+
+render( // render Application usering react-dom
   <Provider store={store}>
     <App />
   </Provider>,

@@ -1,4 +1,4 @@
-import { nextPlayer, isTerminal, heuristic, isAiTurn, isPlayerTurn, nextAvailableBoards } from '../gamehelpers'
+import { nextPlayer, isTerminal, heuristic, isAiTurn, isPlayerTurn, nextAvailableBoards, isLastPlayerTurn } from '../gamehelpers'
 
 /*
     * private: function that recursively computes the minimax value of the state
@@ -53,6 +53,14 @@ const ai = {
         * @returns [Action]: the action which should be dispatched or undefined
     */
     getAction: (state) => {
+        if (isLastPlayerTurn(state.stepNumber, state.playerSymbol)) { // automaticly select last cell
+            let nextTurn = nextAvailableBoards(state.board, state.playerSymbol)[0];
+            return {
+                type: "SELECT_CELL",
+                position: nextTurn.position,
+                symbol: state.playerSymbol,
+            }
+        }
         if (!isAiTurn(state) || isTerminal(state.board)) {
             return;
         }
