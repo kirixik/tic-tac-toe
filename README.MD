@@ -19,9 +19,17 @@ https://en.wikipedia.org/wiki/Tic-tac-toe
 2. npm install
 3. npm test
 
+## Supported Browsers
+
+Current versions of Chrome, Firefox, Safari, Microsoft Edge
+
 ## Technologies
 
-Written using ReactJs, Redux, Enzyme, HTML, CSS
+Written using 
+1. React to create interactive UIs
+2. Redux as  predictable state container for JavaScript apps.
+3. Enzyme used for testing 
+4. HTML, CSS used for markup
 
 #Gameplay
 
