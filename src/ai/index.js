@@ -53,7 +53,7 @@ const ai = {
         * @returns [Action]: the action which should be dispatched or undefined
     */
     getAction: (state) => {
-        if (isLastPlayerTurn(state.stepNumber, state.playerSymbol)) { // automaticly select last cell
+        if (!isTerminal(state.board) && isLastPlayerTurn(state.stepNumber, state.playerSymbol)) { // automaticly select last cell
             let nextTurn = nextAvailableBoards(state.board, state.playerSymbol)[0];
             return {
                 type: "SELECT_CELL",
