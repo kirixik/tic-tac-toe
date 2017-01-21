@@ -41,17 +41,18 @@ const isTerminal = (board) => {
     }
     return false;
 };
-const heuristic = (board, player) => {
+const heuristic = (board, player, depth) => {
     for (let i = 0; i < lines.length; i++) {
         const [a, b, c] = lines[i];
         if (board[a] && board[a] === board[b] && board[a] === board[c]) {
-            if (board[a] === player)
-                return 10;
+            if (board[a] === player) {
+                return 100 - depth;
+            }
             else
-                return -10;
+                return -100 + depth;
         }
     }
-    return 5;
+    return 50;
 }
 
 const nextAvailableBoards = (board, player) => {
@@ -75,7 +76,7 @@ const evaluateGameState = (board) => {
             if (board[a] && board[a] === board[b] && board[a] === board[c]) {
                 return {
                     isGameActive: false,
-                    information: board[a]+" is winner",
+                    information: board[a] + " is Winner",
                 }
             }
         }

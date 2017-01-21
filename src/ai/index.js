@@ -1,10 +1,10 @@
 import { nextPlayer, isTerminal, heuristic, isAiTurn, isPlayerTurn, nextAvailableBoards } from '../gamehelpers'
-const MiniMax = (board, player) => {
+const MiniMax = (board, player, depth) => {
     if (isTerminal(board))
-        return heuristic(board, player)
+        return heuristic(board, player, depth)
     let score = -Infinity;
     nextAvailableBoards(board, player).forEach(function (child, i, arr) {
-        let s = -MiniMax(child.board, nextPlayer(player));
+        let s = -MiniMax(child.board, nextPlayer(player), depth+1);
         if (s > score) {
             score = s;
         }
@@ -19,11 +19,11 @@ const evaluateNextPositions = (state, player) => {
     if (state.stepNumber === 0)
         return state.board.map((value, index) => ({
             position: index,
-            score: 5
+            score: 50
         }));
     const result = nextAvailableBoards(state.board, player).map((availableBoard) => {
         return {
-            score: -MiniMax(availableBoard.board, nextPlayer(player)),
+            score: -MiniMax(availableBoard.board, nextPlayer(player), 0),
             position: availableBoard.position
         }
     });
