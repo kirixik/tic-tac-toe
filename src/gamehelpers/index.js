@@ -68,14 +68,14 @@ const nextAvailableBoards = (board, player) => {
     });
 };
 
-const evaluatGameState = (board) => {
+const evaluateGameState = (board) => {
     if (isTerminal(board)) {
         for (let i = 0; i < lines.length; i++) {
             const [a, b, c] = lines[i];
             if (board[a] && board[a] === board[b] && board[a] === board[c]) {
                 return {
                     isGameActive: false,
-                    information: "Winner is " + board[a],
+                    information: board[a]+" is winner",
                 }
             }
         }
@@ -87,7 +87,16 @@ const evaluatGameState = (board) => {
     return {
         isGameActive: true,
     }
-
+};
+const getHighlightedCells = (board) => {
+    const highlightedCells = Array(9).fill(false);
+    for (let i = 0; i < lines.length; i++) {
+        const [a, b, c] = lines[i];
+        if (board[a] && board[a] === board[b] && board[a] === board[c]) {
+            highlightedCells[a] = highlightedCells[b] = highlightedCells[c] = true;
+        }
+    }
+    return highlightedCells;
 };
 
-export { nextPlayer, isAiTurn, availableTurns, isTerminal, heuristic, nextAvailableBoards, isPlayerTurn, evaluatGameState }
+export { nextPlayer, isAiTurn, availableTurns, isTerminal, heuristic, nextAvailableBoards, isPlayerTurn, evaluateGameState, getHighlightedCells }

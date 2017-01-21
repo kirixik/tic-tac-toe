@@ -1,9 +1,15 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import { getHighlightedCells, evaluateGameState } from '../gamehelpers'
 
-const App = ({ board, stepNumber, playerSymbol, gameState, selectCell, selectSymbol, restartGame}) => {
+const App = ({ board, stepNumber, playerSymbol, selectCell, selectSymbol, restartGame}) => {
+    const gameState = evaluateGameState(board);
+    const highlightedCells = getHighlightedCells(board);
+    const getButtonClass = (index) => {
+        return 'cell ' + (highlightedCells[index] ? 'active' : '');
+    }
     const listItems = board.map((symbol, index) =>
-        <button disabled={!gameState.isGameActive} className="cell" key={index} onClick={(e) => {
+        <button disabled={!gameState.isGameActive} className={getButtonClass(index)} key={index} onClick={(e) => {
             if (symbol === null)
                 selectCell(index, stepNumber)
         } }>
@@ -18,10 +24,13 @@ const App = ({ board, stepNumber, playerSymbol, gameState, selectCell, selectSym
                 (!gameState.isGameActive) ?
                     (<div>
                         <div>{gameState.information}</div>
-                        <button onClick={(e) => restartGame()}> Restart </button>
-
                     </div>) : null
             }
+            {
+                (playerSymbol != null) ?
+                    (<button onClick={(e) => restartGame()}> Restart </button>) : null
+            }
+
             {playerSymbol === null ?
                 (<section>
                     <button onClick={(e) => selectSymbol('X')}> select X </button>

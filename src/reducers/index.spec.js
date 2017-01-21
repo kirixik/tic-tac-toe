@@ -3,10 +3,7 @@ describe('reducer tests', () => {
     const initialState = {
         board: Array(9).fill(null),
         stepNumber: 0,
-        playerSymbol: null,
-        gameState: {
-            isGameActive: true,
-        }
+        playerSymbol: null
     }
     it('should provide the initial state', () => {
         expect(reducer(undefined, {})).toEqual(initialState)

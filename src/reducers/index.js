@@ -1,12 +1,7 @@
-import { evaluatGameState } from '../gamehelpers'
-
 const initialState = {
   board: Array(9).fill(null),
   stepNumber: 0,
   playerSymbol: null,
-  gameState: {
-    isGameActive: true,
-  }
 }
 
 const reducer = (state = initialState, action) => {
@@ -15,7 +10,7 @@ const reducer = (state = initialState, action) => {
       return { ...state, playerSymbol: action.selectedSymbol }
     }
     case "SELECT_CELL": {
-      const newState = {
+      return {
         ...state,
         board: [
           ...state.board.slice(0, action.position),
@@ -24,8 +19,6 @@ const reducer = (state = initialState, action) => {
         ],
         stepNumber: state.stepNumber + 1
       };
-      newState.gameState = evaluatGameState(newState.board);
-      return newState;
     }
     case "RESTART_GAME": {
       return {...initialState};
