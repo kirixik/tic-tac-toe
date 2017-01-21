@@ -34,13 +34,13 @@ describe('gamehelpers tests', () => {
 
     it('should return heuristic evaluation of state', () => {
         const noWinConditionState = initialState;
-        expect(heuristic(noWinConditionState.board, "X")).toEqual(5);
+        expect(heuristic(noWinConditionState.board, "X", 0)).toEqual(50);
         const winConditionState = {
             board: ["X", "X", "X", null, null, "O", null, null, "O"],
             stepNumber: 5,
             playerSymbol: "X"
         }
-        expect(heuristic(winConditionState.board, "X")).toEqual(10);
+        expect(heuristic(winConditionState.board, "X", 0)).toEqual(100);
     })
 
 })
