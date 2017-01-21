@@ -77,12 +77,14 @@ const evaluateGameState = (board) => {
                 return {
                     isGameActive: false,
                     information: board[a] + " is Winner",
+                    class: 'active'
                 }
             }
         }
         return {
             isGameActive: false,
-            information: "Draw"
+            information: "Draw",
+            class: 'draw'
         }
     }
     return {

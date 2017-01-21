@@ -38,6 +38,7 @@ h2 {
     .game-info {
         width: 400px;
         height: 60px;
+        font-weight: bold;
         text-align: center;
         margin: 15px auto;
         font-size: 40px;
@@ -81,6 +82,7 @@ h2 {
     .game-info {
         width: 200px;
         height: 30px;
+        font-weight: bold;
         text-align: center;
         margin: 5px auto;
         font-size: 20px;
@@ -106,4 +108,9 @@ h2 {
     transition-duration: 0.5s;
     transition-timing-function: ease-in;
     color: #CC3366;
+}
+.draw {
+    transition-duration: 0.5s;
+    transition-timing-function: ease-in;
+    color: #CC9900;
 }
