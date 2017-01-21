@@ -9,7 +9,7 @@ const App = ({ board, stepNumber, playerSymbol, selectCell, selectSymbol, restar
         return 'cell ' + (highlightedCells[index] ? 'active' : '');
     }
     const listItems = board.map((symbol, index) =>
-        <button disabled={!gameState.isGameActive} className={getButtonClass(index)} key={index} onClick={(e) => {
+        <button disabled={!gameState.isGameActive || symbol != null || playerSymbol === null} className={getButtonClass(index)} key={index} onClick={(e) => {
             if (symbol === null)
                 selectCell(index, stepNumber)
         } }>
@@ -19,30 +19,29 @@ const App = ({ board, stepNumber, playerSymbol, selectCell, selectSymbol, restar
     return (
         <div>
             <h2>Tic Tac Toe</h2>
-            <span>step: {stepNumber}</span>
+            <div className="board">
+                {listItems}
+            </div>
+            <div className="game-menu">
+                {
+                    (playerSymbol != null) ?
+                        (<button className="btn restart-btn" onClick={(e) => restartGame()}> Restart </button>) : null
+                }
+
+                {playerSymbol === null ?
+                    (<div className="btn-container">
+                        <button className="btn select-symbol-btn" onClick={(e) => selectSymbol('X')}> select X </button>
+                        <button className="btn select-symbol-btn" onClick={(e) => selectSymbol('O')}> select O </button>
+                    </div>)
+                    : null}
+            </div>
             {
                 (!gameState.isGameActive) ?
-                    (<div>
-                        <div>{gameState.information}</div>
+                    (<div className="game-info">
+                        {gameState.information}
                     </div>) : null
             }
-            {
-                (playerSymbol != null) ?
-                    (<button onClick={(e) => restartGame()}> Restart </button>) : null
-            }
 
-            {playerSymbol === null ?
-                (<section>
-                    <button onClick={(e) => selectSymbol('X')}> select X </button>
-                    <button onClick={(e) => selectSymbol('O')}> select O </button>
-                </section>)
-                :
-                <div>
-                    <div>Your symbol is {playerSymbol}</div>
-                    <div className="board">
-                        {listItems}
-                    </div>
-                </div>}
         </div>)
 }
 
