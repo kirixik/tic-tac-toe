@@ -10,7 +10,8 @@ import './index.css';
 const store = createStore(
   reducer
 )
-store.dispatch({ type: "undefined" });
+
+store.dispatch({ type: "RESTART_GAME" });
 
 function handleChange() {
   const action = ai.getAction(store.getState());

@@ -17,12 +17,12 @@ const reducer = (state = initialState, action) => {
           action.symbol,
           ...state.board.slice(action.position + 1),
         ],
-        playerSymbol: (state.playerSymbol===null && state.stepNumber===0) ? "X" : state.playerSymbol,
+        playerSymbol: (state.playerSymbol === null && state.stepNumber === 0) ? "X" : state.playerSymbol,
         stepNumber: state.stepNumber + 1
       };
     }
     case "RESTART_GAME": {
-      return {...initialState};
+      return { ...initialState };
     }
     default:
       return state;

@@ -4,16 +4,12 @@ import { connect } from 'react-redux'
 const GameMenu = ({ playerSymbol, selectSymbol, restartGame}) => {
     return (
         <div className="game-menu">
-            {
-                (playerSymbol != null) ?
-                    (<button className="btn restart-btn" onClick={(e) => restartGame()}> Restart </button>) : null
-            }
             {playerSymbol === null ?
                 (<div className="btn-container">
                     <button className="btn select-symbol-btn" onClick={(e) => selectSymbol('X')}> select X </button>
                     <button className="btn select-symbol-btn" onClick={(e) => selectSymbol('O')}> select O </button>
                 </div>)
-                : null}
+                : (<button className="btn restart-btn" onClick={(e) => restartGame()}> Restart </button>)}
         </div>)
 }
 

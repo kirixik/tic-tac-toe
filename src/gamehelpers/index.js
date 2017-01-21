@@ -1,4 +1,4 @@
-const lines = [
+const winLines = [
     [0, 1, 2],
     [3, 4, 5],
     [6, 7, 8],
@@ -33,8 +33,8 @@ const availableTurns = (board) => {
 const isTerminal = (board) => {
     if (availableTurns(board).length === 0)
         return true;
-    for (let i = 0; i < lines.length; i++) {
-        const [a, b, c] = lines[i];
+    for (let i = 0; i < winLines.length; i++) {
+        const [a, b, c] = winLines[i];
         if (board[a] && board[a] === board[b] && board[a] === board[c]) {
             return true;
         }
@@ -42,8 +42,8 @@ const isTerminal = (board) => {
     return false;
 };
 const heuristic = (board, player, depth) => {
-    for (let i = 0; i < lines.length; i++) {
-        const [a, b, c] = lines[i];
+    for (let i = 0; i < winLines.length; i++) {
+        const [a, b, c] = winLines[i];
         if (board[a] && board[a] === board[b] && board[a] === board[c]) {
             if (board[a] === player) {
                 return 100 - depth;
@@ -71,8 +71,8 @@ const nextAvailableBoards = (board, player) => {
 
 const evaluateGameState = (board) => {
     if (isTerminal(board)) {
-        for (let i = 0; i < lines.length; i++) {
-            const [a, b, c] = lines[i];
+        for (let i = 0; i < winLines.length; i++) {
+            const [a, b, c] = winLines[i];
             if (board[a] && board[a] === board[b] && board[a] === board[c]) {
                 return {
                     isGameActive: false,
@@ -91,8 +91,8 @@ const evaluateGameState = (board) => {
 };
 const getHighlightedCells = (board) => {
     const highlightedCells = Array(9).fill(false);
-    for (let i = 0; i < lines.length; i++) {
-        const [a, b, c] = lines[i];
+    for (let i = 0; i < winLines.length; i++) {
+        const [a, b, c] = winLines[i];
         if (board[a] && board[a] === board[b] && board[a] === board[c]) {
             highlightedCells[a] = highlightedCells[b] = highlightedCells[c] = true;
         }
