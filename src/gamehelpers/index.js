@@ -52,7 +52,7 @@ const heuristic = (board, player, depth) => {
                 return -100 + depth;
         }
     }
-    return 50;
+    return 0;
 }
 
 const nextAvailableBoards = (board, player) => {

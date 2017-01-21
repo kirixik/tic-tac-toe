@@ -35,7 +35,7 @@ const evaluateNextPositions = (state, player) => {
     if (state.stepNumber === 0)
         return state.board.map((value, index) => ({
             position: index,
-            score: 50
+            score: 0
         }));
     const result = nextAvailableBoards(state.board, player).map((availableBoard) => {
         return {
