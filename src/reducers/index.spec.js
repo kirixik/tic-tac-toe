@@ -16,17 +16,17 @@ describe('reducer tests', () => {
     it('should return state with celected cell and increase stepNumber counter', () => {
         const stateBefore = initialState;
         const expectedStateAfter = {
-            ...stateBefore,
             board: [
                 ...stateBefore.board.slice(0, 5),
                 "X",
                 ...stateBefore.board.slice(6),
             ],
-            stepNumber: stateBefore.stepNumber + 1
+            stepNumber: stateBefore.stepNumber + 1,
+            playerSymbol: "X"
         }
         expect(reducer(stateBefore, { type: 'SELECT_CELL', position: 5, symbol: "X" })).toEqual(expectedStateAfter)
     })
-    it('should return the same state if action type is undesfined', () => {
+    it('should return the same state if action.type is undesfined', () => {
         expect(reducer(initialState, {})).toEqual(initialState)
     })
 })
