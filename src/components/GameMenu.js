@@ -6,8 +6,8 @@ const GameMenu = ({ playerSymbol, selectSymbol, restartGame}) => {
         <div className="game-menu">
             {playerSymbol === null ?
                 (<div className="btn-container">
-                    <button className="btn select-symbol-btn" onClick={(e) => selectSymbol('X')}> select X </button>
-                    <button className="btn select-symbol-btn" onClick={(e) => selectSymbol('O')}> select O </button>
+                    <button className="btn select-symbol-btn" onClick={(e) => selectSymbol('X')}> play first </button>
+                    <button className="btn select-symbol-btn" onClick={(e) => selectSymbol('O')}> play second </button>
                 </div>)
                 : (<button className="btn restart-btn" onClick={(e) => restartGame()}> Restart </button>)}
         </div>)

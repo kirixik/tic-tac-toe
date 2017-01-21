@@ -26,8 +26,8 @@ Written using ReactJs, Redux, Enzyme, HTML, CSS
 #Gameplay
 
 ## First move
-To play as first player click at the'Select X' button or click at any cell at board.
-To play as second player click at the'Select O' button.
+To play as first player click at the 'play first' button or click at any cell at board.
+To play as second player click at the 'play second' button.
 
 ## Restart
 To restart game click at the restart button
