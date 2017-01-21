@@ -41,7 +41,7 @@ describe('gamehelpers tests', () => {
 
     it('should return heuristic evaluation of state', () => {
         const noWinConditionState = initialState;
-        expect(heuristic(noWinConditionState.board, "X", 0)).toEqual(50);
+        expect(heuristic(noWinConditionState.board, "X", 0)).toEqual(0);
         const winConditionState = {
             board: ["X", "X", "X", null, null, "O", null, null, "O"],
             stepNumber: 5,
@@ -53,7 +53,7 @@ describe('gamehelpers tests', () => {
             stepNumber: 9,
             playerSymbol: "X"
         }
-        expect(heuristic(drawState.board, "X", 0)).toEqual(50);
+        expect(heuristic(drawState.board, "X", 0)).toEqual(0);
         const looseState = {
             board: ["X", "X", "X", "O", "O", null, null, null, null],
             stepNumber: 5,
