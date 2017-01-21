@@ -11,7 +11,7 @@ https://en.wikipedia.org/wiki/Tic-tac-toe
 2. Open the root directory of your cloned repository as the project root
 3. npm install
 4. npm start
-5. open http://localhost:3000/
+5. Open http://localhost:3000/
 
 ## Run tests
 
@@ -21,21 +21,20 @@ https://en.wikipedia.org/wiki/Tic-tac-toe
 
 ## Supported Browsers
 
-Current versions of Chrome, Firefox, Safari, Microsoft Edge
+Latest versions of Chrome, Firefox, Safari, Microsoft Edge
 
 ## Technologies
 
-Written using 
 1. React to create interactive UIs
-2. Redux as  predictable state container for JavaScript apps.
+2. Redux as  predictable state container for JavaScript apps
 3. Enzyme used for testing 
 4. HTML, CSS used for markup
 
 #Gameplay
 
 ## First move
-To play as first player click at the 'play first' button or click at any cell at board.
-To play as second player click at the 'play second' button.
+To play as first player click at the 'play first' button or click at any cell at board
+To play as second player click at the 'play second' button
 
 ## Restart
 To restart game click at the restart button
@@ -43,7 +42,7 @@ To restart game click at the restart button
 # AI
 
 ## Description
-AI never loses, only wins or reduces to draw. Uses minimax algorithm.
+AI never loses, only wins or reduces to draw. Uses minimax algorithm
 
 ## Minimax algorithm
 Tic-Tac-Toe is zero-sum game therefore we can use Minmax for AI.
