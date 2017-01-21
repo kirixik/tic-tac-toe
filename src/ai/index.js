@@ -57,9 +57,9 @@ const ai = {
             return;
         }
         const aiSymbol = nextPlayer(state.playerSymbol);
-        const positionsScores = evaluateNextPositions(state, aiSymbol)
-        positionsScores.sort((item1, item2) => {
-            return item1.score < item2.score;
+        let positionsScores = evaluateNextPositions(state, aiSymbol)
+        positionsScores = positionsScores.sort((item1, item2) => {
+            return item2.score - item1.score;
         });
         const maxScore = positionsScores[0].score;
         const bestPositions = positionsScores.filter((item) => {
