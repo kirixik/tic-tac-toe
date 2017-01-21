@@ -1,5 +1,5 @@
-import ai, { nextPlayer, isAiTurn, isTerminal, heuristic } from './index'
-describe('ai tests', () => {
+import { nextPlayer, isTerminal, heuristic, isAiTurn } from './index'
+describe('gamehelpers tests', () => {
     const initialState = {
         board: ["X", null, null, "X", null, "O", null, null, "O"],
         stepNumber: 4,
